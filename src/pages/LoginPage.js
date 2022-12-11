@@ -64,7 +64,7 @@ function LoginPage() {
         </Button>
       </Form>
       <Form.Text>
-        Ainda não possui cadastro? Faça já o
+        Possui cadastro? Faça já o
         <Link
           className="text-warning fw-bold text-decoration-none"
           to="/sign-up"
