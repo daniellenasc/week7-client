@@ -15,6 +15,7 @@ function LoginPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
+  //função que vai rodar quando o botão do formulário for clicado:
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -25,7 +26,11 @@ function LoginPage() {
 
       console.log(response.data);
 
-      //setItem -> coloca algo dentro do localStorage
+      //guardando o TOKEN no localStorage:
+      //response.data é um objeto, mas no localStorage guarda-se JSON
+      //setItem -> coloca algo dentro do localStorage, recebe dois parâmetros:
+      // 1) a chave de nome loggedInUser (o usuário que está logadi)
+      // 2) o valor: response.data (= token e usuário)
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
     } catch (error) {
       console.log(error);

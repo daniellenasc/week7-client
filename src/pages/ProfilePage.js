@@ -4,11 +4,12 @@ import { useEffect } from "react";
 import api from "../api/api";
 
 function ProfilePage() {
+  //pegando os dados do usuário
   useEffect(() => {
     async function fetchUser() {
       try {
+        //api é o axios configurado para estar com o bearer token no cabeçalho da requisição
         const response = await api.get("/user/profile");
-
         console.log(response);
       } catch (error) {
         console.log(error);
