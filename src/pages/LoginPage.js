@@ -23,6 +23,9 @@ function LoginPage() {
 
       //console.log(response.data);
 
+      //depois de logar, ir para a página de perfil
+      navigate("/profile");
+
       //guardando o TOKEN no localStorage:
       //response.data é um objeto, mas no localStorage guarda-se JSON
       //setItem -> coloca algo dentro do localStorage, recebe dois parâmetros:
