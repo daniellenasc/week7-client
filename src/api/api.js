@@ -1,6 +1,6 @@
 //para esse arquivo, ver a documentação do axios!
 
-//aqui configuramos o axios para estar com o bearer token no cabeçalho de todas as requisições
+//aqui criamos uma instência do axios configurado para estar com o bearer token no cabeçalho (header) em todas as requisições que forem feitas
 
 import axios from "axios";
 
@@ -9,6 +9,8 @@ const apiURLs = {
   development: "http://localhost:8080",
   production: "LINK DO SERVER DEPLOYADO VAI AQUI",
 };
+
+//console.log(process.env) -> o node sabe que está em development
 
 //instancia que sabe qual é a BASEURL QUE DEVE SER USADA NAS REQUISIÇÕES DO AXIOS
 const api = axios.create({ baseURL: apiURLs[process.env.NODE_ENV] });
@@ -20,7 +22,7 @@ api.interceptors.request.use((config) => {
   //capturar o loggedInUser do localStorage  (lembrando que ele vem em formato de JSON)
   const loggedInUserJSON = localStorage.getItem("loggedInUser");
 
-  //transformando o json em uma OBJETO
+  //transformando o json em uma OBJETO, ou, caso não haja nenhum json (null), seja transformado em uma string vazia, para que não dê nenhum erro na aplicação
   const parseLoggedInUser = JSON.parse(loggedInUserJSON || '""');
 
   if (parseLoggedInUser.token) {

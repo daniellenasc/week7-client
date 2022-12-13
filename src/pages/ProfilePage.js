@@ -9,6 +9,7 @@ function ProfilePage() {
     async function fetchUser() {
       try {
         //api é o axios configurado para estar com o bearer token no cabeçalho da requisição
+        //requisição para pegar as informações no backend
         const response = await api.get("/user/profile");
         console.log(response);
       } catch (error) {
