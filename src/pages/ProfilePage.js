@@ -1,9 +1,11 @@
 import { Button, Col, Container, Nav, Navbar, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import api from "../api/api";
 
 function ProfilePage() {
+  const navigate = useNavigate();
+
   //pegando os dados do usuário
   useEffect(() => {
     async function fetchUser() {
@@ -19,6 +21,12 @@ function ProfilePage() {
 
     fetchUser();
   }, []);
+
+  //função para deslogar da aplicação: remover o loggedInUser do localStorage
+  function signOut() {
+    localStorage.removeItem("loggedInUser");
+    navigate("/");
+  }
 
   return (
     <div>
@@ -50,6 +58,11 @@ function ProfilePage() {
               <Link className="nav-link" to="/delete-profile">
                 Excluir perfil
               </Link>
+            </Button>
+          </Col>
+          <Col>
+            <Button variant="dark" onClick={signOut}>
+              Sign out
             </Button>
           </Col>
         </Row>
