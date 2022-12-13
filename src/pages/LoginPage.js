@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/api";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -19,12 +19,9 @@ function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8080/user/login",
-        form
-      );
+      const response = await api.post("/user/login", form);
 
-      console.log(response.data);
+      //console.log(response.data);
 
       //guardando o TOKEN no localStorage:
       //response.data é um objeto, mas no localStorage guarda-se JSON
