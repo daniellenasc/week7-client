@@ -1,13 +1,16 @@
 import { Button, Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import api from "../api/api";
 import { AuthContext } from "../contexts/authContext";
+import userEvent from "@testing-library/user-event";
 
 function ProfilePage() {
   const navigate = useNavigate();
 
   const { setLoggedInUser } = useContext(AuthContext);
+
+  const [user, setUser] = useState({});
 
   //pegando os dados do usuário
   useEffect(() => {
@@ -16,7 +19,8 @@ function ProfilePage() {
         //api é o axios configurado para estar com o bearer token no cabeçalho da requisição
         //requisição para pegar as informações no backend
         const response = await api.get("/user/profile");
-        console.log(response);
+        //console.log(response);
+        setUser(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -52,6 +56,9 @@ function ProfilePage() {
       </Navbar>
       <Container className="mt-5">
         <h1 className="text-muted">Nome do usuário</h1>
+        <p>{user.name}</p>
+        <p>{user.email}</p>
+        <img src={user.profilePic} alt="profile" width={150} />
         <Row>
           <Col>
             <Button variant="primary">
