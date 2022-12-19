@@ -55,8 +55,8 @@ function ProfilePage() {
         </Container>
       </Navbar>
       <Container className="mt-5">
-        <h1 className="text-muted">Nome do usuário</h1>
-        <p>{user.name}</p>
+        <h1 className="text-muted">{user.name.toUpperCase()}</h1>
+
         <p>{user.email}</p>
         <img src={user.profilePic} alt="profile" width={150} />
         <Row>
