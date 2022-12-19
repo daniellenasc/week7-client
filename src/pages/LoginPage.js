@@ -36,6 +36,11 @@ function LoginPage() {
       //atualizar o context
       setLoggedInUser({ ...response.data });
 
+      //caso haja perfil de administrador:
+      /*   if (response.data.user.role === 'ADMIN'){
+        navigate("/admin")
+      } */
+
       //depois de logar, ir para a página de perfil
       navigate("/profile");
     } catch (error) {
