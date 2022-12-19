@@ -28,6 +28,7 @@ function AuthContextComponent(props) {
 
   //o contexto retorna um provider
   //props.children é o conteúdo entre as tags de abertura e fechamento
+  //tem dois momentos que teremos que atualizar o loggedInUser: no login e no logout
   return (
     <AuthContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       {props.children}

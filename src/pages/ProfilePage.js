@@ -1,10 +1,13 @@
 import { Button, Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import api from "../api/api";
+import { AuthContext } from "../contexts/authContext";
 
 function ProfilePage() {
   const navigate = useNavigate();
+
+  const { setLoggedInUser } = useContext(AuthContext);
 
   //pegando os dados do usuário
   useEffect(() => {
@@ -22,10 +25,14 @@ function ProfilePage() {
     fetchUser();
   }, []);
 
-  //função para deslogar da aplicação: remover o loggedInUser do localStorage
+  //função para deslogar da aplicação
   function signOut() {
+    //remover o loggedInUser do localStorage
     localStorage.removeItem("loggedInUser");
     navigate("/");
+
+    //atualizar o context
+    setLoggedInUser(null);
   }
 
   return (

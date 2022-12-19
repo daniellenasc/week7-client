@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/api";
+import { AuthContext } from "../contexts/authContext";
 
 function LoginPage() {
   const navigate = useNavigate();
+
+  const { setLoggedInUser } = useContext(AuthContext);
 
   const [form, setForm] = useState({
     email: "",
@@ -23,15 +26,18 @@ function LoginPage() {
 
       //console.log(response.data);
 
-      //depois de logar, ir para a página de perfil
-      navigate("/profile");
-
       //guardando o TOKEN no localStorage:
       //response.data é um objeto, mas no localStorage guarda-se JSON
       //setItem -> coloca algo dentro do localStorage, recebe dois parâmetros:
       // 1) a chave de nome loggedInUser (o usuário que está logadi)
       // 2) o valor: response.data (= token e usuário)
       localStorage.setItem("loggedInUser", JSON.stringify(response.data));
+
+      //atualizar o context
+      setLoggedInUser({ ...response.data });
+
+      //depois de logar, ir para a página de perfil
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }
