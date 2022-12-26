@@ -1,5 +1,5 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import api from "../api/api";
 import { AuthContext } from "../contexts/authContext";
@@ -40,10 +40,24 @@ function ProfilePage() {
   function signOut() {
     //remover o loggedInUser do localStorage
     localStorage.removeItem("loggedInUser");
-    navigate("/");
 
     //atualizar o context
     setLoggedInUser(null);
+
+    navigate("/");
+  }
+
+  //função para deletar o perfil do usuário
+  async function handleDeleteUser() {
+    try {
+      //deletar o usuário
+      await api.delete("/user/delete");
+      //chamar afunção signOut, para retirar o usuário do localStorage, atualizar o contexto (loggedInUser = nul) e navegar para a home
+      signOut();
+    } catch (error) {
+      console.error(error);
+      alert("Algo deu errado ao deletar o usuário!");
+    }
   }
 
   return (
@@ -75,10 +89,8 @@ function ProfilePage() {
             />
           </Col>
           <Col>
-            <Button variant="danger">
-              <Link className="nav-link" to="/delete-profile">
-                Excluir perfil
-              </Link>
+            <Button variant="danger" onClick={handleDeleteUser}>
+              Excluir perfil
             </Button>
           </Col>
           <Col>
