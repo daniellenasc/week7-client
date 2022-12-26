@@ -101,7 +101,7 @@ function SignUpPage() {
           <Form.Label>Senha</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Insira uma senha válida"
+            placeholder="Mínimo de oito caracteres, pelo menos uma letra e um número"
             name="password"
             value={form.password}
             onChange={handleChange}
