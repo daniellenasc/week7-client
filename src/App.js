@@ -7,11 +7,13 @@ import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ErrorPage";
 import { AuthContextComponent } from "./contexts/authContext";
 import ProtectRoute from "./components/ProtectRoute";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div className="App">
       <AuthContextComponent>
+        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />

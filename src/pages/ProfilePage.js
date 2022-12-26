@@ -1,9 +1,9 @@
-import { Button, Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import api from "../api/api";
 import { AuthContext } from "../contexts/authContext";
-import userEvent from "@testing-library/user-event";
+import EditUser from "../components/EditUser";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -11,6 +11,12 @@ function ProfilePage() {
   const { setLoggedInUser } = useContext(AuthContext);
 
   const [user, setUser] = useState({});
+
+  const [form, setForm] = useState({
+    name: "",
+  });
+
+  const [reload, setReload] = useState(false);
 
   //pegando os dados do usuário
   useEffect(() => {
@@ -21,13 +27,14 @@ function ProfilePage() {
         const response = await api.get("/user/profile");
         //console.log(response);
         setUser(response.data);
+        setForm({ name: response.data.name });
       } catch (error) {
         console.log(error);
       }
     }
 
     fetchUser();
-  }, []);
+  }, [reload]);
 
   //função para deslogar da aplicação
   function signOut() {
@@ -41,31 +48,31 @@ function ProfilePage() {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand>IronRH</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Link className="nav-link" to="/">
-                Página inicial
-              </Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
       <Container className="mt-5">
-        <h1 className="text-muted">{user.name}</h1>
+        <Row className="align-items-center mb-5">
+          <Col>
+            <h1 className="text-muted">{user.name}</h1>
 
-        <p>{user.email}</p>
-        <img src={user.profilePic} alt="profile" width={150} />
+            <p>{user.email}</p>
+          </Col>
+          <Col>
+            <img
+              src={user.profilePic}
+              alt="profile"
+              width={250}
+              className="rounded"
+            />{" "}
+          </Col>
+        </Row>
+
         <Row>
           <Col>
-            <Button variant="primary">
-              <Link className="nav-link" to="/edit-profile">
-                Editar perfil
-              </Link>
-            </Button>
+            <EditUser
+              form={form}
+              setForm={setForm}
+              reload={reload}
+              setReload={setReload}
+            />
           </Col>
           <Col>
             <Button variant="danger">
@@ -76,7 +83,7 @@ function ProfilePage() {
           </Col>
           <Col>
             <Button variant="dark" onClick={signOut}>
-              Sign out
+              Sair
             </Button>
           </Col>
         </Row>
