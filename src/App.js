@@ -9,6 +9,7 @@ import { AuthContextComponent } from "./contexts/authContext";
 import ProtectRoute from "./components/ProtectRoute";
 import NavBar from "./components/NavBar";
 import TasksPage from "./pages/TasksPage";
+import NotificationPage from "./pages/NotificationPage";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
           <Route
             path="/tasks"
             element={<ProtectRoute Component={TasksPage} />}
+          />
+          <Route
+            path="/logs"
+            element={<ProtectRoute Component={NotificationPage} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

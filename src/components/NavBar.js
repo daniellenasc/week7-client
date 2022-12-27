@@ -25,6 +25,9 @@ function NavBar() {
                 <Link className="nav-link" to="/tasks">
                   Minhas tarefas
                 </Link>
+                <Link className="nav-link" to="/logs">
+                  Notificações
+                </Link>
               </>
             )}
             {/* SE O USUÁRIO NÃO ESTIVER LOGADO: */}
