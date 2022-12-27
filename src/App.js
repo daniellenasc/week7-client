@@ -8,6 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import { AuthContextComponent } from "./contexts/authContext";
 import ProtectRoute from "./components/ProtectRoute";
 import NavBar from "./components/NavBar";
+import TasksPage from "./pages/TasksPage";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
           <Route
             path="/profile"
             element={<ProtectRoute Component={ProfilePage} />}
+          />
+          <Route
+            path="/tasks"
+            element={<ProtectRoute Component={TasksPage} />}
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

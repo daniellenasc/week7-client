@@ -1,5 +1,5 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import api from "../api/api";
 import { AuthContext } from "../contexts/authContext";
@@ -97,6 +97,11 @@ function ProfilePage() {
             <Button variant="dark" onClick={signOut}>
               Sair
             </Button>
+          </Col>
+          <Col>
+            <Link to="/tasks">
+              <Button variant="primary">Minhas Tarefas</Button>
+            </Link>
           </Col>
         </Row>
       </Container>

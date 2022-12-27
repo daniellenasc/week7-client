@@ -22,6 +22,9 @@ function NavBar() {
                 <Link className="nav-link" to="/profile">
                   Perfil
                 </Link>
+                <Link className="nav-link" to="/tasks">
+                  Minhas tarefas
+                </Link>
               </>
             )}
             {/* SE O USUÁRIO NÃO ESTIVER LOGADO: */}
