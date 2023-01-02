@@ -94,14 +94,21 @@ function ProfilePage() {
             </Button>
           </Col>
           <Col>
+            <Link to="/tasks">
+              <Button variant="success">Minhas Tarefas</Button>
+            </Link>
+          </Col>
+
+          <Col>
+            <Link to="/logs">
+              <Button variant="success">Minhas Notificações</Button>
+            </Link>
+          </Col>
+
+          <Col>
             <Button variant="dark" onClick={signOut}>
               Sair
             </Button>
-          </Col>
-          <Col>
-            <Link to="/tasks">
-              <Button variant="primary">Minhas Tarefas</Button>
-            </Link>
           </Col>
         </Row>
       </Container>

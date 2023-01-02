@@ -27,7 +27,7 @@ function EditUser({ form, setForm, reload, setReload }) {
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-        Editar Usuário
+        Editar perfil
       </Button>
 
       <Modal show={show} onHide={handleClose}>

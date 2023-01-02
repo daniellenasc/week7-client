@@ -20,7 +20,7 @@ function NavBar() {
                   Página inicial
                 </Link>
                 <Link className="nav-link" to="/profile">
-                  Perfil
+                  Meu Perfil
                 </Link>
                 <Link className="nav-link" to="/tasks">
                   Minhas tarefas

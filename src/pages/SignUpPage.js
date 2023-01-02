@@ -99,13 +99,18 @@ function SignUpPage() {
 
         <Form.Group className="mb-3">
           <Form.Label>Senha</Form.Label>
+
           <Form.Control
             type="password"
-            placeholder="Mínimo de oito caracteres, pelo menos uma letra, um número e um caracter especial"
+            placeholder="SenhaSegura123."
             name="password"
             value={form.password}
             onChange={handleChange}
           />
+          <Form.Text className="text-muted">
+            Mínimo de oito caracteres, pelo menos uma letra, um número e um
+            caracter especial.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
