@@ -11,33 +11,33 @@ function HomePage() {
   return (
     <Container
       style={{ height: "100vh" }}
-      className="d-flex flex-column justify-content-center"
+      className="d-flex flex-column justify-content-center align-content-center"
     >
-      <div className="m-4">
-        <h1 className="mb-2">Bem-vindo ao IronTasks</h1>
+      <Container>
+        <h1 className="m-2">Bem-vindo ao IronTasks</h1>
         <h4>Uma plataforma para gerenciar suas tarefas</h4>
-      </div>
+      </Container>
 
-      <div className="m-4">
-        <Button className="p-4 me-4" variant="dark" size="lg">
+      <Container className="m-4">
+        <Button className="p-4 m-3" variant="dark" size="lg">
           <Link className="nav-link" to="/sign-up">
             Cadastrar no sistema
           </Link>
         </Button>
-        <Button className="p-4" variant="dark" size="lg">
+        <Button className="p-4 m-3" variant="dark" size="lg">
           <Link className="nav-link" to="/login">
             Entrar no sistema
           </Link>
         </Button>
 
         {loggedInUser && (
-          <Button className="p-4 ms-4" variant="dark" size="lg">
+          <Button className="p-4 m-3" variant="dark" size="lg">
             <Link className="nav-link" to="/profile">
               Vá para o Perfil
             </Link>
           </Button>
         )}
-      </div>
+      </Container>
     </Container>
   );
 }
