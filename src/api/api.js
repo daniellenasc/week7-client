@@ -7,7 +7,7 @@ import axios from "axios";
 // APIs para dar get quando estivermos em desenvolvimento (localhost) ou produção (link do deploy) - o axios sabe em qual momento estamos!
 const apiURLs = {
   development: "http://localhost:8080",
-  production: "LINK DO SERVER DEPLOYADO VAI AQUI",
+  production: "https://irontasks-server.cyclic.app",
 };
 
 //console.log(process.env) -> o node sabe que está em development
