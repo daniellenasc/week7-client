@@ -32,7 +32,7 @@ function EditUser({ form, setForm, reload, setReload }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Editar perfil</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3">

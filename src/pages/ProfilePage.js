@@ -80,7 +80,7 @@ function ProfilePage() {
         </Row>
 
         <Row>
-          <Col>
+          <Col className="m-2">
             <EditUser
               form={form}
               setForm={setForm}
@@ -88,24 +88,24 @@ function ProfilePage() {
               setReload={setReload}
             />
           </Col>
-          <Col>
+          <Col className="m-2">
             <Button variant="danger" onClick={handleDeleteUser}>
               Excluir perfil
             </Button>
           </Col>
-          <Col>
+          <Col className="m-2">
             <Link to="/tasks">
               <Button variant="success">Minhas Tarefas</Button>
             </Link>
           </Col>
 
-          <Col>
+          <Col className="m-2">
             <Link to="/logs">
               <Button variant="success">Minhas Notificações</Button>
             </Link>
           </Col>
 
-          <Col>
+          <Col className="m-2">
             <Button variant="dark" onClick={signOut}>
               Sair
             </Button>
