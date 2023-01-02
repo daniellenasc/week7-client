@@ -1,4 +1,4 @@
-import { Button, Container, Col, Row } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
@@ -19,12 +19,12 @@ function HomePage() {
       </Container>
 
       <Container>
-        <Container className="m-3">
+        <Container className="mb-2">
           <h1 className="m-3">Bem-vindo ao IronTasks</h1>
           <h4>Uma plataforma para gerenciar suas tarefas</h4>
         </Container>
 
-        <Container className="d-flex flex-row align-items-center">
+        <Container className="d-flex flex-row align-items-center justify-content-center">
           <Button className="p-4 m-3" variant="dark" size="lg">
             <Link className="nav-link" to="/sign-up">
               Cadastrar no sistema
